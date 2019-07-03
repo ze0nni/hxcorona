@@ -1,0 +1,12 @@
+{
+  "name": "hxcorona",
+  "url" : "https://github.com/ze0nni/hxcorona",
+  "license": "MIT",
+  "tags": ["cross", "useless"],
+  "description": "This library is useless in the same way on every platform.",
+  "version": "0.0.1",
+  "classPath": "src/",
+  "releasenote": "Not all features was implements",
+  "contributors": ["Onni"],
+  "tags": ["game", "lua", "corona", "extern"]
+}
