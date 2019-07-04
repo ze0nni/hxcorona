@@ -34,42 +34,52 @@ typedef SetFillColor = {
 	}
 }
 
-@:extern abstract RGB(Int) from Int {
+@:extern abstract RGB(Int) {
 	
-	@:extern inline public function new(color:Int) 
+	@:extern public inline function new(color:Int) 
 	{
 		this = color;
 	}
 	
-	@:extern public inline function iUnits<T>(consumer: Int -> Int -> Int -> T) {
+	@:from static inline function fromInt(value: Int) {
+		return new RGB(value  | 0xff000000);
+	}
+	
+	@:extern public inline function iAlpha(a: Int) :RGB {
+		return new RGB((this & 0xffffff) | ((a & 0xff) << 24));
+	}
+	
+	@:extern public inline function iUnits<T>(consumer: Int -> Int -> Int -> Int -> T) {
 		return consumer(
 			((this >> 16) & 0xff),
 			((this >> 8) & 0xff),
-			(this & 0xff)
+			(this & 0xff),
+			((this >> 24) & 0xff)
 		);
 	}
 	
 	inline static var ratio = 1.0 / 255;
 	
-	@:extern public inline function fUnits<T>(consumer: Float -> Float -> Float -> T) {
+	@:extern public inline function fUnits<T>(consumer: Float -> Float -> Float -> Float -> T) {
 		return consumer(
 			((this >> 16) & 0xff) * ratio,
 			((this >> 8) & 0xff) * ratio,
-			(this & 0xff) * ratio
+			(this & 0xff) * ratio,
+			((this >> 24) & 0xff) * ratio
 		);
 	}
 	
 	@:extern public inline function toColorPaint(): ColorPaint {
-		return fUnits(function(r, g, b) {
-			return Paint.color(r, g, b);
+		return fUnits(function(r, g, b, a) {
+			return Paint.color(r, g, b, a);
 		});
 	}
 	
 	@:extern inline public function setFillColor(
 		target: SetFillColor
 	): Void {
-		new RGB(this).fUnits(function(r, g, b) {
-			target.setFillColor(r, g, b);
+		new RGB(this).fUnits(function(r, g, b, a) {
+			target.setFillColor(r, g, b, a);
 		});
 	}
 }
