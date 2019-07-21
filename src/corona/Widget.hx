@@ -157,7 +157,17 @@ typedef ScrollViewOptions = {
 	?verticalScrollDisabled: Bool,
 	?isLocked: Bool,
 	?isBounceEnabled: Bool,
-	?listener: ScrollViewListener
+	?listener: ScrollViewListener,
+	
+	// Visual Options
+	?backgroundColor: ColorPaint,
+	?hideBackground: Bool,
+	?hideScrollBar: Bool,
+	?scrollBarOptions: ScrollBarOptions,
+	?topPadding: Float,
+	?bottomPadding: Float,
+	?leftPadding: Float,
+	?rightPadding: Float
 }
 
 typedef ScrollBarOptions = {
@@ -198,16 +208,7 @@ typedef ScrollToOptions = {
  * 
  * In this case Shape added to ScrollView incorrect
  */
-extern class ScrollView extends DisplayObject {
-	var backgroundColor(default, default): ColorPaint;
-	var hideBackground(default, default): Bool;
-	var hideScrollBar(default, default): Bool;
-	var scrollBarOptions(default, default): ScrollBarOptions;
-	var topPadding(default, default): Float;
-	var bottomPadding(default, default): Float;
-	var leftPadding(default, default): Float;
-	var rightPadding(default, default): Float;
-	
+extern class ScrollView extends DisplayObject {	
 	function insert(child: DisplayObject, ?resetTransform: Bool): Void;
 	function remove(index: Int): DisplayObject;
 	
