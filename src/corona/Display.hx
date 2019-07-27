@@ -220,6 +220,8 @@ extern class DisplayObject extends EventDispatcher<TouchEventName, TouchEvent> {
 	
 	var parent(default, never): GroupObject;
 	
+	var rotation(default, default): Float;
+	
 	public function contentToLocal(globalX: Float, globalY: Float): Coordinates;
 	public function localToContent(localX: Float, localY: Float): Coordinates;
 	
