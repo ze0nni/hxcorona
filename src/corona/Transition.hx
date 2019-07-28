@@ -1,10 +1,7 @@
 package corona;
 import corona.Display.DisplayObject;
+import corona.Easing.EasingFunction;
 
-/**
- * ...
- * @author Onni
- */
 @:native("transition")
 extern class Transition
 {
@@ -20,12 +17,12 @@ extern class Transition
 extern abstract Callback(Void -> Void) from Void -> Void {
 	//
 }
- 
+
 typedef TweenArgs = {
 	?time: Int,
 	?delay: Int,
 	?iterations: Int,
-	//?transition: Float -> Float -> Float -> Float -> Float,
+	?transition: EasingFunction,
 	?x: Float,
 	?y: Float,
 	?width: Float,
