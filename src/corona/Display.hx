@@ -134,7 +134,11 @@ extern class Display
 	public static function newMesh(x: Float, y: Float, options: MeshOptions): ShapeObject<MeshPath>;
 	@:native("newMesh")
 	public static function newMeshIn(parent: GroupObject, x: Float, y: Float, options: MeshOptions): ShapeObject<MeshPath>;
-	//display.newPolygon()
+	
+	@:native("newPolygon")
+	public static function newPolygon(x: Float, y: Float, vertices: Table<Int, Float>): ShapeObject<MeshPath>;
+	@:native("newPolygon")
+	public static function newPolygonIn(parent: GroupObject, x: Float, y: Float, vertices: Table<Int, Float>): ShapeObject<MeshPath>;
 	
 	@:native("newRect")
 	public static function newRect(x: Float, y: Float, width: Float, height: Float): ShapeObject<RectPath>;
