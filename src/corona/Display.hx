@@ -211,6 +211,11 @@ extern class TouchEvent {
     var y : Float;
 }
 
+@:multiReturn extern class UVCoordinates {
+    var u : Float;
+    var v : Float;
+}
+
 
 extern class DisplayObject extends EventDispatcher<TouchEventName, TouchEvent> {
 	var alpha(default, default): Float;
@@ -265,7 +270,11 @@ typedef CirclePath = {
 }
 
 typedef MeshPath = {
-	
+	function setVertex(index: Int, x: Float, y: Float): Void;
+	function getVertex(index: Int): Coordinates;
+	function setUV(index: Int, u: Float, v: Float): Void;
+	function getUV(index: Int): UVCoordinates;
+	function getVertexOffset(): Coordinates;
 }
 
 extern class ShapeObject<P> extends DisplayObject {
