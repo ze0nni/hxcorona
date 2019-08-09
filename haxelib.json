@@ -4,7 +4,7 @@
   "license": "MIT",
   "tags": ["cross", "useless"],
   "description": "This library is useless in the same way on every platform.",
-  "version": "0.0.3",
+  "version": "0.1.4",
   "classPath": "src/",
   "releasenote": "Not all features was implements",
   "contributors": ["Onni"],

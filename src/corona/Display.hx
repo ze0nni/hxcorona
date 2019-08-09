@@ -52,9 +52,9 @@ extern class Display
 	//display.loadRemoteImage()
 	
 	@:native("newCircle")
-	public static function newCircle(xCenter: Float, yCenter: Float, radius: Float): ShapeObject;
+	public static function newCircle(xCenter: Float, yCenter: Float, radius: Float): ShapeObject<CirclePath>;
 	@:native("newCircle")
-	public static function newCircleIn(parent: GroupObject, xCenter: Float, yCenter: Float, radius: Float): ShapeObject;
+	public static function newCircleIn(parent: GroupObject, xCenter: Float, yCenter: Float, radius: Float): ShapeObject<CirclePath>;
 	
 	@:native("newContainer")
 	public static function newContainer(width: Int, height: Int): ContainerObject;
@@ -131,18 +131,23 @@ extern class Display
 	
 	
 	@:native("newMesh")
-	public static function newMesh(x: Float, y: Float, options: MeshOptions): ShapeObject;
+	public static function newMesh(x: Float, y: Float, options: MeshOptions): ShapeObject<MeshPath>;
 	@:native("newMesh")
-	public static function newMeshIn(parent: GroupObject, x: Float, y: Float, options: MeshOptions): ShapeObject;
+	public static function newMeshIn(parent: GroupObject, x: Float, y: Float, options: MeshOptions): ShapeObject<MeshPath>;
 	//display.newPolygon()
 	
 	@:native("newRect")
-	public static function newRect(x: Float, y: Float, width: Float, height: Float): ShapeObject;
+	public static function newRect(x: Float, y: Float, width: Float, height: Float): ShapeObject<RectPath>;
 	
 	@:native("newRect")
-	public static function newRectIn(parent: GroupObject, x: Float, y: Float, width: Float, height: Float): ShapeObject;
+	public static function newRectIn(parent: GroupObject, x: Float, y: Float, width: Float, height: Float): ShapeObject<RectPath>;
 	
-	//display.newRoundedRect()
+	@:native("newRoundedRect")
+	public static function newRoundedRect(x: Float, y: Float, width: Float, height: Float, cornerRadius: Float): ShapeObject<RoundedRectPath>;
+	
+	@:native("newRoundedRect")
+	public static function newRoundedRectIn(parent: GroupObject, x: Float, y: Float, width: Float, height: Float, cornerRadius: Float): ShapeObject<RoundedRectPath>;
+	
 	//display.newSnapshot()
 	//display.newSprite()
 	@:native("newText")
@@ -232,13 +237,40 @@ extern class DisplayObject extends EventDispatcher<TouchEventName, TouchEvent> {
 	public function toFront(): Void;
 }
 
-extern class ShapeObject extends DisplayObject {
+typedef RectPath = {
+	var width(default, default): Float;
+	var height(default, default): Float;
+	var x1(default, default): Float;
+	var y1(default, default): Float;
+	var x2(default, default): Float;
+	var y2(default, default): Float;
+	var x3(default, default): Float;
+	var y3(default, default): Float;
+	var x4(default, default): Float;
+	var y4(default, default): Float;
+}
+
+typedef RoundedRectPath = {
+	var width(default, default): Float;
+	var height(default, default): Float;
+	var radius(default, default): Float;
+}
+
+typedef CirclePath = {
+	var radius(default, default): Float;
+}
+
+typedef MeshPath = {
+	
+}
+
+extern class ShapeObject<P> extends DisplayObject {
 	var fill(default, default): Paint;
-	//object.path
+	var path(default, default): P;
 	//object.stroke
 }
 
-extern class ImageObject extends ShapeObject {
+extern class ImageObject extends ShapeObject<RectPath> {
 	public function setFillColor(r:Float, g:Float, b:Float, ?a:Float): Void;
 	public function setGrayFillColor(g:Float, ?a:Float): Void;
 }
