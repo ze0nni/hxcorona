@@ -278,14 +278,22 @@ typedef MeshPath = {
 }
 
 extern class ShapeObject<P> extends DisplayObject {
-	var fill(default, default): Paint;
 	var path(default, default): P;
-	//object.stroke
+	
+	var fill(default, default): Paint;
+	function setFillColor(r: Float, g: Float, b: Float, ?a: Float): Void;
+	@:native("setFillColor")
+	function setGrayFillColor(r: Float, g: Float, b: Float, ?a: Float): Void;
+	
+	var stroke(default, default): Paint;
+	var strokeWidth(default, default): Float;
+	function setStrokeColor(r: Float, g: Float, b: Float, ?a: Float): Void;
+	@:native("setStrokeColor")
+	function setGrayStrokeColor(g: Float, ?a: Float): Void;
 }
 
 extern class ImageObject extends ShapeObject<RectPath> {
-	public function setFillColor(r:Float, g:Float, b:Float, ?a:Float): Void;
-	public function setGrayFillColor(g:Float, ?a:Float): Void;
+	
 }
 
 abstract Paint(Dynamic)
@@ -366,6 +374,8 @@ abstract GradientDiretion(Dynamic)
 }
 
 typedef MeshOptions = {
+	?x: Float,
+	?y: Float,
 	vertices: Table<Int,Float>,
 	?parent: GroupObject,
 	?mode : MeshMode,
