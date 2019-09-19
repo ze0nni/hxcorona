@@ -280,12 +280,12 @@ typedef MeshPath = {
 extern class ShapeObject<P> extends DisplayObject {
 	var path(default, default): P;
 	
-	var fill(default, default): Paint;
+	var fill(default, default): Null<Paint>;
 	function setFillColor(r: Float, g: Float, b: Float, ?a: Float): Void;
 	@:native("setFillColor")
 	function setGrayFillColor(r: Float, g: Float, b: Float, ?a: Float): Void;
 	
-	var stroke(default, default): Paint;
+	var stroke(default, default): Null<Paint>;
 	var strokeWidth(default, default): Float;
 	function setStrokeColor(r: Float, g: Float, b: Float, ?a: Float): Void;
 	@:native("setStrokeColor")
