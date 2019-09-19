@@ -8,6 +8,10 @@ typedef SetFillColor = {
 	function setFillColor(r: Float, g: Float, b: Float, ?a: Float): Void;
 }
 
+typedef SetStrokeColor = {
+	function setStrokeColor(r: Float, g: Float, b: Float, ?a: Float): Void;
+}
+
 @:extern class Color
 {
 	inline static var ratio = 1.0 / 255;
@@ -26,6 +30,15 @@ typedef SetFillColor = {
 	): Void {
 		rgb(color, function(r, g, b) {
 			target.setFillColor(r, g, b);
+		});
+	}
+	
+	public inline static function setStrokeColor(
+		color: Int,
+		target: SetStrokeColor
+	): Void {
+		rgb(color, function(r, g, b) {
+			target.setStrokeColor(r, g, b);
 		});
 	}
 	
