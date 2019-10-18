@@ -1,10 +1,5 @@
 package corona;
 
-/**
- * ...
- * @author Onni
- */
-
 @:native("native")
 extern class Native
 {

@@ -6,7 +6,6 @@ import corona.Graphics.ImageSheet;
 import corona.Graphics.TextureResource;
 import corona.Runtime.EventDispatcher;
 import corona.System.DirectoryConstant;
-import lua.Table;
 
 @:native("display") 
 extern class Display
@@ -136,9 +135,9 @@ extern class Display
 	public static function newMeshIn(parent: GroupObject, x: Float, y: Float, options: MeshOptions): ShapeObject<MeshPath>;
 	
 	@:native("newPolygon")
-	public static function newPolygon(x: Float, y: Float, vertices: Table<Int, Float>): ShapeObject<MeshPath>;
+	public static function newPolygon(x: Float, y: Float, vertices: LuaTable<Int, Float>): ShapeObject<MeshPath>;
 	@:native("newPolygon")
-	public static function newPolygonIn(parent: GroupObject, x: Float, y: Float, vertices: Table<Int, Float>): ShapeObject<MeshPath>;
+	public static function newPolygonIn(parent: GroupObject, x: Float, y: Float, vertices: LuaTable<Int, Float>): ShapeObject<MeshPath>;
 	
 	@:native("newRect")
 	public static function newRect(x: Float, y: Float, width: Float, height: Float): ShapeObject<RectPath>;
@@ -315,7 +314,7 @@ abstract Paint(Dynamic)
 	}
 	
 	inline public static function color(r: Float, g: Float, b:Float, ?a: Float = 1): ColorPaint {
-		return Table.create([r, g, b, a]);
+		return LuaTable.create([r, g, b, a]);
 	}
 	
 	inline public static function gradient(color1: ColorPaint, color2:ColorPaint, direction: GradientDiretion): GradientPaint {
@@ -336,7 +335,7 @@ abstract Paint(Dynamic)
 	}
 }
 
-typedef ColorPaint = Table<Int, Float>;
+typedef ColorPaint = LuaTable<Int, Float>;
 
 @:enum abstract BitmapPaintType(String) { var image = "image"; }
 typedef BitmapPaint = {
@@ -376,12 +375,12 @@ abstract GradientDiretion(Dynamic)
 typedef MeshOptions = {
 	?x: Float,
 	?y: Float,
-	vertices: Table<Int,Float>,
+	vertices: LuaTable<Int,Float>,
 	?parent: GroupObject,
 	?mode : MeshMode,
-	?indices: Table<Int,Float>,
+	?indices: LuaTable<Int,Float>,
 	?zeroBasedIndices: Bool,
-	?uvs: Table<Int,Float>
+	?uvs: LuaTable<Int,Float>
 };
 
 @:enum abstract MeshMode(String) {

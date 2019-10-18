@@ -10,12 +10,7 @@ import corona.Graphics.ImageSheet;
 import corona.System.DirectoryConstant;
 import corona.Transition.Callback;
 
-/**
- * ...
- * @author Onni
- */
-
- @:luaRequire("widget")
+@:luaRequire("widget")
 extern class Widget
 {
 	static function newButton(options: ButtonOptions): ButtonWidget;

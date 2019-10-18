@@ -1,7 +1,5 @@
 package corona;
 
-import lua.Table;
-
 @:multiReturn extern class LuaEither<R> {
 	var result(default, null) : R;
     var error(default, null) : String;
@@ -26,9 +24,9 @@ extern class System
 	@:native("getPreference") 
 	public static function getPreference<N, R>(category: PreferenceCategory<N, R>, name: N): R;
 	@:native("setPreferences") 
-	public static function setPreferences(category: PreferenceCategory<String, String>, preferences: Table<String, String>): Void;
+	public static function setPreferences(category: PreferenceCategory<String, String>, preferences: LuaTable<String, String>): Void;
 	@:native("deletePreferences") 
-	public static function deletePreferences(category: PreferenceCategory<String, String>, preferences: Table<Int, String>): Void;
+	public static function deletePreferences(category: PreferenceCategory<String, String>, preferences: LuaTable<Int, String>): Void;
 	//system.getTimer()
 	//system.hasEventSource()
 	//system.newEventDispatcher()

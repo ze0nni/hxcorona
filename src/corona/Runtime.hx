@@ -1,9 +1,5 @@
 package corona;
 
-/**
- * ...
- * @author Onni
- */
 @:native("_G")
 extern class Runtime
 {

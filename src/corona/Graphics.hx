@@ -1,15 +1,15 @@
 package corona;
 import corona.Display.TextureWrap;
 import corona.System.DirectoryConstant;
-import lua.Table.AnyTable;
+
 
 @:native("graphics") 
 private extern private class NativeGraphics {
-	static function newTexture(params: AnyTable): TextureResource;
-	static function newImageSheet(filename: String, params: AnyTable): ImageSheet;
+	static function newTexture(params: LuaTable<Dynamic,Dynamic>): TextureResource;
+	static function newImageSheet(filename: String, params: LuaTable<Dynamic,Dynamic>): ImageSheet;
 }
 
-typedef SheetOptions = AnyTable;
+typedef SheetOptions = LuaTable<Dynamic,Dynamic>;
 
 extern abstract AtlasIndex(Int) {
 }
@@ -26,7 +26,7 @@ class Graphics
 	//@:native("newTexture") 
 	inline static public function newTexture(filename: String): TextureResource {
 		return NativeGraphics.newTexture(
-			AnyTable.create(
+			LuaTable.create(
 				{ type:TextureType.image,
 				  filename:filename
 				}

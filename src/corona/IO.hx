@@ -2,10 +2,6 @@ package corona;
 import corona.System.LuaEither;
 import lua.NativeIterator;
 
-/**
- * ...
- * @author Onni
- */
 @:native("io") 
 extern class IO
 {
