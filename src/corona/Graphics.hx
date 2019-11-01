@@ -4,9 +4,9 @@ import corona.System.DirectoryConstant;
 
 
 @:native("graphics") 
-private extern private class NativeGraphics {
-	static function newTexture(params: LuaTable<Dynamic,Dynamic>): TextureResource;
-	static function newImageSheet(filename: String, params: LuaTable<Dynamic,Dynamic>): ImageSheet;
+@:extern private private class NativeGraphics {
+	static public function newTexture(params: LuaTable<Dynamic,Dynamic>): TextureResource { throw "macro"; }
+	static public function newImageSheet(filename: String, params: LuaTable<Dynamic,Dynamic>): ImageSheet { throw "macro"; }
 }
 
 typedef SheetOptions = LuaTable<Dynamic,Dynamic>;
@@ -14,7 +14,7 @@ typedef SheetOptions = LuaTable<Dynamic,Dynamic>;
 extern abstract AtlasIndex(Int) {
 }
 
-class Graphics
+@:keep class Graphics
 {
 	//graphics.defineEffect()
 	//graphics.getFontMetrics()
@@ -41,13 +41,13 @@ class Graphics
 	var canvas = "canvas";
 }
 
-extern class TextureResource {
-	var filename(default, null): String;
-	var baseDir(default, null): DirectoryConstant;
-	var type(default, null): TextureType;
-	var wrapX(default, null): TextureWrap;
-	var wrapY(default, null): TextureWrap;
-	function releaseSelf(): Void;
+@:extern class TextureResource {
+	public var filename(default, null): String;
+	public var baseDir(default, null): DirectoryConstant;
+	public var type(default, null): TextureType;
+	public var wrapX(default, null): TextureWrap;
+	public var wrapY(default, null): TextureWrap;
+	function releaseSelf(): Void { throw "extern"; }
 }
 
 extern class ImageSheet {

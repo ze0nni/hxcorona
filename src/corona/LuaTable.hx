@@ -1,9 +1,13 @@
 package corona;
 
 #if macro
-extern class LuaTable<A,B> {
-	static public function create<A,B>(data: Dynamic): LuaTable<A, B>;
+
+class LuaTable<A,B> {
+	static public function create<A,B>(data: Dynamic): LuaTable<A, B> {
+		throw "extern";
+	}
 }
+
 #else 
 
 import lua.Table;
