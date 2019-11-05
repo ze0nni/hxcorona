@@ -398,6 +398,8 @@ typedef MeshOptions = {
 }
 
 extern class GroupObject extends DisplayObject {
+	var numChildren(default, never): Int;
+	
 	@:native("insert")
 	function insert(child: DisplayObject, ?resetTransform: Bool): Void;
 	
