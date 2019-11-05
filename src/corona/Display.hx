@@ -215,6 +215,12 @@ extern class TouchEvent {
     var v : Float;
 }
 
+typedef Bounds = {
+	var xMin(default, never): Float;
+	var xMax(default, never): Float;
+	var yMin(default, never): Float;
+	var yMax(default, never): Float;
+}
 
 extern class DisplayObject extends EventDispatcher<TouchEventName, TouchEvent> {
 	var alpha(default, default): Float;
@@ -226,6 +232,7 @@ extern class DisplayObject extends EventDispatcher<TouchEventName, TouchEvent> {
 	var height(default, default): Float;
 	var contentWidth(default, null): Float;
 	var contentHeight(default, null): Float;
+	var contentBounds(default, null): Bounds;
 	var xScale(default, default): Float;
 	var yScale(default, default): Float;
 	var isHitTestable(default, default): Bool;
